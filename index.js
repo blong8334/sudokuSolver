@@ -26,17 +26,17 @@ const _ = require('lodash'),
 ];*/
 
 let puzzle = [
-    [o, 9, o, o, o, o, o, 6, o],
-    [o, o, o, 1, 2, o, o, 8, 7],
-    [7, o, 8, o, o, o, 3, o, o],
-    [o, o, 9, 8, o, o, o, 2, o],
-    [6, o, 4, o, o, o, o, o, 3],
-    [5, o, o, o, o, o, o, o, 8],
-    [o, o, 3, 2, 9, o, o, o, o],
-    [o, 7, o, o, o, 5, 4, o, o],
-    [o, 6, o, o, 7, o, o, o, o]
-],
-iterations = 0;
+        [o, 9, o, o, o, o, o, 6, o],
+        [o, o, o, 1, 2, o, o, 8, 7],
+        [7, o, 8, o, o, o, 3, o, o],
+        [o, o, 9, 8, o, o, o, 2, o],
+        [6, o, 4, o, o, o, o, o, 3],
+        [5, o, o, o, o, o, o, o, 8],
+        [o, o, 3, 2, 9, o, o, o, o],
+        [o, 7, o, o, o, 5, 4, o, o],
+        [o, 6, o, o, 7, o, o, o, o]
+    ],
+    iterations = 0;
 
 sudokuSolver(puzzle);
 
@@ -80,7 +80,7 @@ function guessNums(puzzle, possibleNumbers) {
     for (let i = 0; i < nums.length; i++) {
         let {row, col, possNums} = nums[i];
         for (let j = 0; j < possNums.length; j++) {
-            let puzzleCopy = puzzle.slice(0);
+            let puzzleCopy = _.map(puzzle, (row, idx) => row.slice(0));
             puzzleCopy[row][col] = possNums[j];
             let res = sudokuSolver(puzzleCopy);
             if (res) return res;
